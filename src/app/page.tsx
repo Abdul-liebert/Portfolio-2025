@@ -2,26 +2,28 @@
 import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { ProjectCard } from "@/components/project-card";
+import { ProjectCard, DesignCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { ScrollProgress } from "@/components/scrollbar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
-
+import { Button } from "@/components/ui/button";
 import Markdown from "react-markdown";
-
+import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
   return (
-    <main className="flex flex-col min-h-[100dvh] space-y-10">
+    <main className="relative overflow-hidden flex flex-col min-h-[100dvh] my-10 space-y-10">
+       
       <div className="z-1 rounded-lg p-4">
         <ScrollProgress className="bottom " />
       </div>
       <section id="hero">
-        <div className="mx-auto w-full max-w-2xl space-y-8">
+        <div className="mx-auto w-full max-w-2xl ">
           <div className="gap-2 flex justify-between">
             <div className="flex-col flex flex-1 space-y-1.5">
               <BlurFadeText
@@ -43,6 +45,13 @@ export default function Page() {
               </Avatar>
             </BlurFade>
           </div>
+          <BlurFade delay={BLUR_FADE_DELAY}>
+            <a
+              href="/CV-Mhmdabdalaziz.pdf"
+            >
+              <Button variant={"default"} className="mt-3 flex w-full md:w-auto">Download CV</Button>
+            </a>
+          </BlurFade>
         </div>
       </section>
       <section id="about" className="border rounded-lg p-4">
@@ -127,7 +136,7 @@ export default function Page() {
                   My Projects
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Check out my latest work
+                  Check out a bit of my work
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   I&apos;ve worked on a variety of projects, from simple
@@ -156,9 +165,29 @@ export default function Page() {
                 />
               </BlurFade>
             ))}
+            {DATA.projects.map((project, id) => (
+              <BlurFade
+                key={project.title}
+                delay={BLUR_FADE_DELAY * 12 + id * 0.05}
+              >
+                <DesignCard
+                  href={project.href}
+                  key={project.title}
+                  title={project.title}
+                  description={project.description}
+                  dates={project.dates}
+                  tags={project.technologies}
+                  image={project.image}
+                  // video={project.video}
+                  links={project.links}
+                />
+              </BlurFade>
+            ))}
           </div>
         </div>
       </section>
+            
+
       {/* <section id="hackathons">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 13}>
