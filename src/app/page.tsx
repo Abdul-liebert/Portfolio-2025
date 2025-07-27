@@ -165,7 +165,7 @@ export default function Page() {
                 />
               </BlurFade>
             ))}
-            {DATA.projects.map((project, id) => (
+            {DATA.portfolio.map((project, id) => (
               <BlurFade
                 key={project.title}
                 delay={BLUR_FADE_DELAY * 12 + id * 0.05}
