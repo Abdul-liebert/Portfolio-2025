@@ -162,6 +162,30 @@ export const DATA = {
       ],
       image: "/project3.png",
     },
+     {
+      title: "Xinna",
+      href: "https://github.com/abdoelzgit/Xinna",
+      dates: "January 2026",
+      active: true,
+      description:
+        "Xinna is a cutting-edge Health-Tech application built using Next.js & Prisma. More than just a pharmacy inventory management system, it features an AI Health Agent (Google Gemini) for real-time symptom consultation. Designed with a premium aesthetic using Framer Motion and GSAP, Xinna offers a seamless and high-performance user experience.",
+      technologies: [
+        "Next.js",
+        "TailwindCSS",
+        "Typescript",
+        "Shadcn UI",
+        "Framer Motion",
+        "Magic UI"
+      ],
+      links: [
+        {
+          type: "Get in Touch",
+          href: "https://github.com/abdoelzgit/Xinna",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/project4.png",
+    },
   ],
   portfolio: [
     {
